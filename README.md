@@ -23,10 +23,21 @@ Malaria remains one of the world's deadliest diseases, with over 229 million cas
 * **Metrics:** Accuracy, F1-Score, Confusion Matrix
 
 ## 📈 Results & Key Insights
-* **High Precision:** The final model achieved an **accuracy of >99%** on the test set, demonstrating exceptional reliability in identifying infected cells.
-* **Sensitivity:** The model prioritized reducing **False Negatives**, ensuring that infected cases are not missed by the system.
-* **Visualization:** Grad-CAM or visualization of intermediate layers showed that the model correctly focuses on the stained parasite spots within the RBCs.
+* **High Sensitivity:** The model achieved a **Recall of 99%+**, which is critical in medical diagnostics to ensure infected cases are not overlooked.
+* **Error Analysis:** Out of 2,500 test samples, the model misclassified only 14 parasitized cells. While low, in a clinical setting, these represent "False Negatives" that require further mitigation.
+* **Morphological Recognition:** The CNN successfully identified the localized color variances and textures characteristic of the Plasmodium parasite within the RBCs.
 
-## 💡 Practical Recommendations
-* **Deployment:** The model is lightweight enough to be deployed on mobile edge devices for field use.
-* **Quality Control:** Use the model as a "second pair of eyes" in clinical settings to flag suspicious slides for expert review.
+## 🚀 Recommendations & Next Steps
+To bridge the gap to 100% detection and improve model robustness, the following steps are proposed:
+
+### 1. Model & Hyperparameter Optimization
+* **Architecture Enhancements:** Increase the depth of the CNN or add more units to the Dense layers to capture finer spatial features of the parasites.
+* **Hyperparameter Tuning:** Systematically tune the **Learning Rate** and experiment with different **Optimizers** (e.g., Adam vs. RMSprop) to escape local minima.
+* **Batch Size & Epochs:** Extend training duration combined with **Learning Rate Scheduling** to allow the model to settle into a more precise global minimum.
+
+### 2. Regularization & Generalization
+* **Dropout Tuning:** Fine-tune Dropout rates to balance the trade-off between training accuracy and generalizability.
+* **Batch Normalization:** Implement normalization layers to stabilize and accelerate training.
+
+### 3. Clinical Integration
+* **Multi-Modal Diagnosis:** This computer vision system is intended as a **Decision Support Tool**. It is strongly advised to be used in conjunction with **Complete Blood Counts (CBC)**, **Antigen tests**, and clinical history for final diagnosis. settings to flag suspicious slides for expert review.
